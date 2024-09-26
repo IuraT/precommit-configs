@@ -1,0 +1,20 @@
+pre-commit:
+  parallel: true
+  commands:
+    brakeman:
+      tags: backend security
+      run: bundle exec brakeman --no-pager
+    audit:
+      tags: backend security
+      run: bundle exec bundle-audit check --update
+    rubocop:
+      tags: backend style
+      glob: "*.rb"
+      run: bundle exec rubocop app/ lib/ config/
+    locales:
+      tags: frontend style
+      glob: "*.yml"
+      run: ./bin/check-translations
+    test:
+      tags: backend test
+      run: bundle exec rails test
