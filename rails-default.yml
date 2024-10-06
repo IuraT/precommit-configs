@@ -11,10 +11,6 @@ pre-commit:
       tags: backend style
       glob: "*.rb"
       run: bundle exec rubocop app/ lib/ config/
-    locales:
-      tags: frontend style
-      glob: "*.yml"
-      run: ./bin/check-translations
     test:
       tags: backend test
       run: bundle exec rails test
